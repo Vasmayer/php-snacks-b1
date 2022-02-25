@@ -39,5 +39,48 @@ $posts = [
                         'text' => 'Text post 6',
                     ]
                 ]
-         ]
+                ];
+
+       /*  var_dump($posts); */
+        $keys_date = array_keys($posts); 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snack2</title>
+</head>
+<body>
+    <?php
+        for($i=0;$i<count($keys_date);$i++):
+    ?>        
+        <h2><?= $keys_date[$i]?></h2>
+        <ul>
+            <?php
+            for($j=0;$j<count($posts[$keys_date[$i]]);$j++):
+            ?>
+            <li>
+            <ul>
+                <?php
+                $keys_posts = array_keys($posts[$keys_date[$i]][$j]); 
+                for($k=0;$k<count($keys_posts);$k++):
+                ?>
+                       <li> <?= $posts[$keys_date[$i]][$j][$keys_posts[$k]] ?></li>
+                <?php
+                endfor;
+                ?>
+            </ul>
+            </li> 
+            <?php  
+            endfor;  
+            ?>
+        </ul>   
+        <?php    
+        endfor;
+        ?>
+    
+</body>
+</html>
